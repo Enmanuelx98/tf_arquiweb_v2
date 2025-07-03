@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
 import pe.edu.upc.tfcreo.Entity.Membresia;
 import pe.edu.upc.tfcreo.Repository.MembresiaRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.MembresiaServiceInterface;
@@ -30,5 +31,11 @@ public class MembresiaServiceImple implements MembresiaServiceInterface {
     @Override
     public List<Membresia> listarMembresia() {
         return membresiaRepository.findAll();
+    }
+
+    @Override
+    public Membresia listId(int id) {
+        return membresiaRepository.findById(id).orElse(new Membresia());
+
     }
 }

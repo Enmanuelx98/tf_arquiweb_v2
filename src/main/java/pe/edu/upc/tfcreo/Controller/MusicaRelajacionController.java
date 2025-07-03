@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.CategoriaMasUsadaDTO;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.MusicaRelajacionDTO;
 import pe.edu.upc.tfcreo.Entity.MusicaRelajacion;
 import pe.edu.upc.tfcreo.ServicesInterface.MusicaRelajacionInterface;
@@ -58,7 +59,13 @@ public class MusicaRelajacionController {
     public List<CategoriaMasUsadaDTO> obtenerTopCategorias() {
         return musicaRelajacionservice.obtenerTop5CategoriasMasUsadas();
     }
-
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public MusicaRelajacionDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        MusicaRelajacionDTO dto = m.map(musicaRelajacionservice.listId(id), MusicaRelajacionDTO.class);
+        return dto;
+    }
 
 }
 

@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.ProgresomusicaS;
 import pe.edu.upc.tfcreo.Entity.ProgresovideosTR;
 import pe.edu.upc.tfcreo.Entity.VideosTecnicasRespiracion;
 import pe.edu.upc.tfcreo.Repository.ProgresovideosTRRepository;
@@ -48,5 +49,11 @@ public class ProgresovideosTRImple implements ProgresovideosTRInterface {
     @Override
     public List<ProgresovideosTR> quantityVideosCompletadosBySesion(int idSesion) {
         return progresovideosTRRepository.quantityVideosCompletadosBySesion(idSesion);
+    }
+
+    @Override
+    public ProgresovideosTR listId(int id) {
+        return progresovideosTRRepository.findById(id).orElse(new ProgresovideosTR());
+
     }
 }

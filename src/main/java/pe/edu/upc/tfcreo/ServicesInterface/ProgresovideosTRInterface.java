@@ -1,6 +1,7 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
 import org.springframework.data.repository.query.Param;
+import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
 import pe.edu.upc.tfcreo.Entity.ProgresovideosTR;
 
 import java.util.List;
@@ -12,5 +13,6 @@ public interface ProgresovideosTRInterface {
     public List<ProgresovideosTR> listarProgresoVideosTR();
     public double calcularPorcentajeProgreso(int idSesion);
     public List<ProgresovideosTR> quantityVideosCompletadosBySesion(int idSesion);
+    public ProgresovideosTR listId(int id);
 
 }

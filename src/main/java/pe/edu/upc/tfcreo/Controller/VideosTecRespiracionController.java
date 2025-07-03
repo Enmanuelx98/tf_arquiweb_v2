@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
 import pe.edu.upc.tfcreo.Dtos.VideosTecnicasRespiracionDTO;
 import pe.edu.upc.tfcreo.Entity.VideosTecnicasRespiracion;
 import pe.edu.upc.tfcreo.ServicesInterface.VideosTecRespiracionInterface;
@@ -52,5 +53,12 @@ public class VideosTecRespiracionController {
             ModelMapper m = new ModelMapper();
             return m.map(x, VideosTecnicasRespiracionDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar por ID
+    @GetMapping("/{id}")
+    public VideosTecnicasRespiracionDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        VideosTecnicasRespiracionDTO dto = m.map(videosTecRespiracionservice.listId(id), VideosTecnicasRespiracionDTO.class);
+        return dto;
     }
 }

@@ -1,5 +1,6 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
+import pe.edu.upc.tfcreo.Entity.Membresia;
 import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
 import java.util.List;
 
@@ -9,5 +10,6 @@ public interface MusicaCategoriaInterface {
     public void eliminarMusicaCategoria(int id);
     public List<MusicaCategoria> listarMusicaCategoria();
     public List<MusicaCategoria> ListarCategoriaOrdenadas();
+    public MusicaCategoria listId(int id);
 
 }

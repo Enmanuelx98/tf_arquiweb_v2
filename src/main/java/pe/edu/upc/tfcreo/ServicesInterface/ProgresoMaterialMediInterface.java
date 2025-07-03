@@ -1,5 +1,6 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
+import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
 import pe.edu.upc.tfcreo.Entity.ProgresoMaterialMedi;
 
 import java.util.List;
@@ -11,5 +12,6 @@ public interface ProgresoMaterialMediInterface {
     public List<ProgresoMaterialMedi> listarProgresoMaterialMedi();
     public double calcularPorcentajeProgreso(int idSesion);
     public List<ProgresoMaterialMedi> quantityMaterialCompletadosBySesion(int idSesion);
+    public ProgresoMaterialMedi listId(int id);
 
 }

@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.TecnicaMeditacion;
 import pe.edu.upc.tfcreo.Entity.Terapia;
 import pe.edu.upc.tfcreo.Repository.TerapiaRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.TerapiaServiceInterface;
@@ -30,5 +31,11 @@ public class TerapiaServiceImple implements TerapiaServiceInterface {
     @Override
     public List<Terapia> listarTerapia() {
         return terapiaRepository.findAll();
+    }
+
+    @Override
+    public Terapia listId(int id) {
+        return terapiaRepository.findById(id).orElse(new Terapia());
+
     }
 }

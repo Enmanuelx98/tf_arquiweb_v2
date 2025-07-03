@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
 import pe.edu.upc.tfcreo.Dtos.UsersDTO;
 import pe.edu.upc.tfcreo.Dtos.UsuarionopassDTO;
 import pe.edu.upc.tfcreo.Entity.Role;
@@ -68,5 +69,12 @@ public class UsuarioController {
             ModelMapper m = new ModelMapper();
             return m.map(x, UsuarionopassDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar por ID
+    @GetMapping("/{id}")
+    public UsersDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        UsersDTO dto = m.map(usuarioService.listId(id), UsersDTO.class);
+        return dto;
     }
 }

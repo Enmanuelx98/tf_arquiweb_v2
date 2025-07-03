@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.Tarjeta;
 import pe.edu.upc.tfcreo.Entity.TecnicaMeditacion;
 import pe.edu.upc.tfcreo.Repository.TecMeditacionRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.TecMeditacionServiceInterface;
@@ -39,5 +40,11 @@ public class TecMeditacionServiceImple implements TecMeditacionServiceInterface 
     @Override
     public List<String[]> cantidadTecnicasMeditacionPorTipoTerapia() {
         return tecMeditacionRepository.cantidadTecnicasMeditacionPorTipoTerapia();
+    }
+
+    @Override
+    public TecnicaMeditacion listId(int id) {
+        return tecMeditacionRepository.findById(id).orElse(new TecnicaMeditacion());
+
     }
 }

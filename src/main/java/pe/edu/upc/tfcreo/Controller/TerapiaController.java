@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
 import pe.edu.upc.tfcreo.Dtos.TerapiaDTO;
 import pe.edu.upc.tfcreo.Entity.Terapia;
 import pe.edu.upc.tfcreo.ServicesImple.TerapiaServiceImple;
@@ -52,6 +53,13 @@ public class TerapiaController {
             ModelMapper m = new ModelMapper();
             return m.map(x, TerapiaDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar por ID
+    @GetMapping("/{id}")
+    public TerapiaDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        TerapiaDTO dto = m.map(terapiaService.listId(id), TerapiaDTO.class);
+        return dto;
     }
 }
 

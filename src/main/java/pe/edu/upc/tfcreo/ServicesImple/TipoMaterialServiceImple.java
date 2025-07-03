@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.Terapia;
 import pe.edu.upc.tfcreo.Entity.TipoMaterial;
 import pe.edu.upc.tfcreo.Repository.TipoMaterialRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.TipoMaterialServiceInterface;
@@ -29,5 +30,11 @@ public class TipoMaterialServiceImple implements TipoMaterialServiceInterface {
     @Override
     public List<TipoMaterial> listarTipoMaterial() {
         return tipoMaterialRepository.findAll();
+    }
+
+    @Override
+    public TipoMaterial listId(int id) {
+        return tipoMaterialRepository.findById(id).orElse(new TipoMaterial());
+
     }
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.MembresiaDTO;
 import pe.edu.upc.tfcreo.Entity.Membresia;
 import pe.edu.upc.tfcreo.ServicesInterface.MembresiaServiceInterface;
@@ -51,5 +52,12 @@ public class MembresiaController {
             ModelMapper m = new ModelMapper();
             return m.map(x, MembresiaDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public MembresiaDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        MembresiaDTO dto = m.map(membresiaService.listId(id), MembresiaDTO.class);
+        return dto;
     }
 }

@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.Role;
 import pe.edu.upc.tfcreo.Entity.Tarjeta;
 import pe.edu.upc.tfcreo.Repository.TarjetaRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.TarjetaServiceInterface;
@@ -29,5 +30,11 @@ public class TarjetaServiceImple implements TarjetaServiceInterface {
     @Override
     public List<Tarjeta> listarTarjeta() {
         return tarjetaRepository.findAll();
+    }
+
+    @Override
+    public Tarjeta listId(int id) {
+        return tarjetaRepository.findById(id).orElse(new Tarjeta());
+
     }
 }

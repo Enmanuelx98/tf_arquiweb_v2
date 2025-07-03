@@ -14,4 +14,6 @@ public interface SesionTerapiaInterface {
     public List<SesionTerapia> quantitySesionesCompletobyUsuario(int u2);
     public List<String[]> usermoresesiones();
     public List<String[]> terapiamoresesesions();
+    public SesionTerapia listId(int id);
+
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
 import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Entity.MaterialMeditacion;
 import pe.edu.upc.tfcreo.ServicesInterface.MateMeditacionServiceInterface;
@@ -62,6 +63,12 @@ public class MateMeditacionController {
         }).collect(Collectors.toList());
 
     }
-
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public MaterialMeditacionDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        MaterialMeditacionDTO dto = m.map(mateMeditacionService.listId(id), MaterialMeditacionDTO.class);
+        return dto;
+    }
     
 }

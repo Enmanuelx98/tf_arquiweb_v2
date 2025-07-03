@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
+import pe.edu.upc.tfcreo.Dtos.SesionTerapiaDTO;
 import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
 import pe.edu.upc.tfcreo.ServicesInterface.BilleteraElecServiceInterface;
 
@@ -45,11 +46,18 @@ public class BilleteraElecController {
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<BilleteraElectronicaDTO> List() {
         return billeteraElecService.listarBilleteraElec().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, BilleteraElectronicaDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar por ID
+    @GetMapping("/{id}")
+    public BilleteraElectronicaDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        BilleteraElectronicaDTO dto = m.map(billeteraElecService.listId(id), BilleteraElectronicaDTO.class);
+        return dto;
     }
 }

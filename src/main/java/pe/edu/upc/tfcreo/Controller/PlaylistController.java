@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.PlaylistDTO;
 import pe.edu.upc.tfcreo.Entity.Playlist;
 import pe.edu.upc.tfcreo.ServicesInterface.PlaylistServiceInterface;
@@ -51,5 +52,13 @@ public class PlaylistController {
             ModelMapper m = new ModelMapper();
             return m.map(x, PlaylistDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public PlaylistDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        PlaylistDTO dto = m.map(playlistServiceinter.listId(id), PlaylistDTO.class);
+        return dto;
     }
 }

@@ -1,5 +1,6 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
+import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
 import pe.edu.upc.tfcreo.Entity.Terapia;
 
 import java.util.List;
@@ -9,4 +10,6 @@ public interface TerapiaServiceInterface {
     public void updateTerapia(Terapia terapia);
     public void eliminarTerapia(int id);
     public List<Terapia> listarTerapia();
+    public Terapia listId(int id);
+
 }

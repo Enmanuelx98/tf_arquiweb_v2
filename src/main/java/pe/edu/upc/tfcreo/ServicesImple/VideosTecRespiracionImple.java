@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.Users;
 import pe.edu.upc.tfcreo.Entity.VideosTecnicasRespiracion;
 import pe.edu.upc.tfcreo.Repository.VideosTecRespiracionRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.VideosTecRespiracionInterface;
@@ -30,5 +31,11 @@ public class VideosTecRespiracionImple implements VideosTecRespiracionInterface 
     @Override
     public List<VideosTecnicasRespiracion> listarVideosTecRespiracion() {
         return repovideos.findAll();
+    }
+
+    @Override
+    public VideosTecnicasRespiracion listId(int id) {
+        return repovideos.findById(id).orElse(new VideosTecnicasRespiracion());
+
     }
 }

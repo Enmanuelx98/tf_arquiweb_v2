@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
 import pe.edu.upc.tfcreo.Dtos.CantidadTecnicaMeditacionPorTipoTerapiaDTO;
 import pe.edu.upc.tfcreo.Dtos.TecnicaMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.TecnicaMeditacionPorTipoTerapiaDTO;
@@ -82,5 +83,12 @@ public class TecMeditacionController {
             dtocantidadTecnicaMeditacionPorTipoTerapiaList.add(dtocantidadTecnicaMeditacionPorTipoTerapia);
         }
         return dtocantidadTecnicaMeditacionPorTipoTerapiaList;
+    }
+    //Buscar por ID
+    @GetMapping("/{id}")
+    public TecnicaMeditacionDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        TecnicaMeditacionDTO dto = m.map(tecMeditacionService.listId(id), TecnicaMeditacionDTO.class);
+        return dto;
     }
 }

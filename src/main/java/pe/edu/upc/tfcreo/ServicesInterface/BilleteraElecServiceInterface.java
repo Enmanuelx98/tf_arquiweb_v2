@@ -9,4 +9,6 @@ public interface BilleteraElecServiceInterface {
     public void updateBilleteraElec(BilleteraElectronica billeteraelectronica);
     public void eliminarBilleteraElec(int id);
     public List<BilleteraElectronica > listarBilleteraElec();
+    public BilleteraElectronica listId(int id);
+
 }

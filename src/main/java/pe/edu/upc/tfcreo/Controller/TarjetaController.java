@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.TarjetaDTO;
 import pe.edu.upc.tfcreo.Entity.Tarjeta;
 import pe.edu.upc.tfcreo.ServicesInterface.TarjetaServiceInterface;
@@ -51,5 +52,12 @@ public class TarjetaController {
             ModelMapper m = new ModelMapper();
             return m.map(x, TarjetaDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public TarjetaDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        TarjetaDTO dto = m.map(tarjetaService.listId(id), TarjetaDTO.class);
+        return dto;
     }
 }

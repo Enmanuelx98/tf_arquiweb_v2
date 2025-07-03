@@ -1,5 +1,6 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
+import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
 import pe.edu.upc.tfcreo.Entity.MaterialMeditacion;
 
 import java.util.List;
@@ -10,5 +11,6 @@ public interface MateMeditacionServiceInterface {
     public void eliminarMateMeditacion(int id);
     public List<MaterialMeditacion> listarMateMeditacion();
     public List<MaterialMeditacion> buscarmaterialnombre(String nombre);
+    public MaterialMeditacion listId(int id);
 
 }

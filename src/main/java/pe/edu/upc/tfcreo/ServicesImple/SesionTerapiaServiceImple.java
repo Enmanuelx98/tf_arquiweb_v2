@@ -50,4 +50,10 @@ public class SesionTerapiaServiceImple implements SesionTerapiaInterface {
     public List<String[]> terapiamoresesesions() {
         return sesionTerapiaRepository.terapiamoresesesions();
     }
+
+    @Override
+    public SesionTerapia listId(int id) {
+        return sesionTerapiaRepository.findById(id).orElse(new SesionTerapia());
+
+    }
 }

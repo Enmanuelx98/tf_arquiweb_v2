@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.Playlist;
 import pe.edu.upc.tfcreo.Entity.ProgresoMaterialMedi;
 import pe.edu.upc.tfcreo.Repository.ProgresoMaterialMediRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.ProgresoMaterialMediInterface;
@@ -45,5 +46,11 @@ public class ProgresoMaterialMediImple implements ProgresoMaterialMediInterface 
     @Override
     public List<ProgresoMaterialMedi> quantityMaterialCompletadosBySesion(int idSesion) {
         return progresoMaterialMediRepository.quantityMaterialCompletadosBySesion(idSesion);
+    }
+
+    @Override
+    public ProgresoMaterialMedi listId(int id) {
+        return progresoMaterialMediRepository.findById(id).orElse(new ProgresoMaterialMedi());
+
     }
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.PorcentajeDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresovideosTRDTO;
 import pe.edu.upc.tfcreo.Entity.ProgresovideosTR;
@@ -73,5 +74,11 @@ public class ProgresovideosTRController {
             return m.map(x, ProgresovideosTRDTO.class);
         }).collect(Collectors.toList());
     }
-
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public ProgresovideosTRDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        ProgresovideosTRDTO dto = m.map(progresovideosTRInterface.listId(id), ProgresovideosTRDTO.class);
+        return dto;
+    }
 }

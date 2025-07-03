@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.RoleDTO;
 import pe.edu.upc.tfcreo.Entity.Role;
 import pe.edu.upc.tfcreo.ServicesInterface.RolSeriveInterface;
@@ -39,19 +40,25 @@ public class RolController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         rolSerive.eliminarRol(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<RoleDTO> List() {
         return rolSerive.listarRol().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, RoleDTO.class);
         }).collect(Collectors.toList());
     }
-
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public RoleDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        RoleDTO dto = m.map(rolSerive.listId(id), RoleDTO.class);
+        return dto;
+    }
 }

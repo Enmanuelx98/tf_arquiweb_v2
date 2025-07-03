@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.Pagos;
 import pe.edu.upc.tfcreo.Entity.Playlist;
 import pe.edu.upc.tfcreo.Repository.PlaylistRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.PlaylistServiceInterface;
@@ -31,6 +32,12 @@ public class PlaylistServiceImple implements PlaylistServiceInterface {
     @Override
     public List<Playlist> listarPlaylist() {
         return playlistRepository.findAll();
+
+    }
+
+    @Override
+    public Playlist listId(int id) {
+        return playlistRepository.findById(id).orElse(new Playlist());
 
     }
 }

@@ -1,6 +1,7 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
 import pe.edu.upc.tfcreo.Dtos.CategoriaMasUsadaDTO;
+import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
 import pe.edu.upc.tfcreo.Entity.MusicaRelajacion;
 import java.util.List;
 
@@ -10,5 +11,6 @@ public interface MusicaRelajacionInterface {
     public void eliminarMusicaRelax(int id);
     public List<MusicaRelajacion> listarMusicaRelax();
     public List<CategoriaMasUsadaDTO> obtenerTop5CategoriasMasUsadas();
+    public MusicaRelajacion listId(int id);
 
 }

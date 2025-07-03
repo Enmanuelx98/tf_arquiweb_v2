@@ -3,6 +3,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
+import pe.edu.upc.tfcreo.Entity.SesionTerapia;
 import pe.edu.upc.tfcreo.Repository.BilleteraElecRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.BilleteraElecServiceInterface;
 
@@ -30,5 +31,11 @@ public class BilleteraElecServiceImple implements BilleteraElecServiceInterface 
     @Override
     public List<BilleteraElectronica> listarBilleteraElec() {
         return BilleteraElecRepository.findAll();
+    }
+
+    @Override
+    public BilleteraElectronica listId(int id) {
+        return BilleteraElecRepository.findById(id).orElse(new BilleteraElectronica());
+
     }
 }

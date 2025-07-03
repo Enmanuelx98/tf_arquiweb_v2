@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.PagosDTO;
 import pe.edu.upc.tfcreo.Entity.Pagos;
 import pe.edu.upc.tfcreo.ServicesInterface.PagosServiceInterface;
@@ -51,5 +52,13 @@ public class PagosController {
             ModelMapper m = new ModelMapper();
             return m.map(x, PagosDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public PagosDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        PagosDTO dto = m.map(pagosService.listId(id), PagosDTO.class);
+        return dto;
     }
 }

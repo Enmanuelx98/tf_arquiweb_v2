@@ -1,5 +1,6 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
+import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
 import pe.edu.upc.tfcreo.Entity.Membresia;
 
 import java.util.List;
@@ -9,4 +10,6 @@ public interface MembresiaServiceInterface {
     public void updateMembresia(Membresia membresia);
     public void eliminarMembresia(int id);
     public List<Membresia> listarMembresia();
+    public Membresia listId(int id);
+
 }

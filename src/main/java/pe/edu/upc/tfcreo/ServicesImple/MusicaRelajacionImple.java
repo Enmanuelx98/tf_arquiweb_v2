@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.tfcreo.Dtos.CategoriaMasUsadaDTO;
+import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
 import pe.edu.upc.tfcreo.Entity.MusicaRelajacion;
 import pe.edu.upc.tfcreo.Repository.MusicaRelajacionRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.MusicaRelajacionInterface;
@@ -42,5 +43,11 @@ public class MusicaRelajacionImple implements MusicaRelajacionInterface  {
     public List<CategoriaMasUsadaDTO> obtenerTop5CategoriasMasUsadas() {
         Pageable topFive = PageRequest.of(0,5);
         return musicaRelajacionRepository.top5CategoriasMasUsadas( topFive);
+    }
+
+    @Override
+    public MusicaRelajacion listId(int id) {
+        return musicaRelajacionRepository.findById(id).orElse(new MusicaRelajacion());
+
     }
 }

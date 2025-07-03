@@ -56,6 +56,14 @@ public class SesionTerapiaController {
         }).collect(Collectors.toList());
     }
 
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public SesionTerapiaDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        SesionTerapiaDTO dto = m.map(sesionTerapiaInterface.listId(id), SesionTerapiaDTO.class);
+        return dto;
+    }
+
     //listarsesiones por usuario
     @GetMapping("/sesionUsuario/{id}")
     //@PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")

@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfcreo.Entity.MusicaRelajacion;
 import pe.edu.upc.tfcreo.Entity.Pagos;
 import pe.edu.upc.tfcreo.Repository.PagosRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.PagosServiceInterface;
@@ -31,5 +32,11 @@ public class PagosServiceImple implements PagosServiceInterface {
     @Override
     public List<Pagos> listarPagos() {
         return pagosRepository.findAll();
+    }
+
+    @Override
+    public Pagos listId(int id) {
+        return pagosRepository.findById(id).orElse(new Pagos());
+
     }
 }

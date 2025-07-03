@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.MaterialMeditacionDTO;
 import pe.edu.upc.tfcreo.Dtos.PorcentajeDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresoMaterialMediDTO;
 import pe.edu.upc.tfcreo.Entity.ProgresoMaterialMedi;
@@ -66,11 +67,18 @@ public class ProgresoMaterialMediController {
 
     //Lista de materiales completados
     @GetMapping("/materialcompleta/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
+    //@PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<ProgresoMaterialMediDTO> ListMusicaCompleto(@PathVariable int id) {
         return progresoMaterialMediInterface.quantityMaterialCompletadosBySesion(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, ProgresoMaterialMediDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar sesion por ID
+    @GetMapping("/{id}")
+    public ProgresoMaterialMediDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        ProgresoMaterialMediDTO dto = m.map(progresoMaterialMediInterface.listId(id), ProgresoMaterialMediDTO.class);
+        return dto;
     }
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
 import pe.edu.upc.tfcreo.Dtos.TipoMaterialDTO;
 import pe.edu.upc.tfcreo.Entity.TipoMaterial;
 import pe.edu.upc.tfcreo.ServicesInterface.TipoMaterialServiceInterface;
@@ -51,6 +52,13 @@ public class TipoMaterialController {
             ModelMapper m = new ModelMapper();
             return m.map(x, TipoMaterialDTO.class);
         }).collect(Collectors.toList());
+    }
+    //Buscar por ID
+    @GetMapping("/{id}")
+    public TipoMaterialDTO buscarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        TipoMaterialDTO dto = m.map(tipoMaterialService.listId(id), TipoMaterialDTO.class);
+        return dto;
     }
 }
 
