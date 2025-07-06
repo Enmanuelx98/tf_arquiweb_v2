@@ -28,7 +28,7 @@ public interface SesionTerapiaRepository extends JpaRepository<SesionTerapia, In
             "join Sesionterapia s on u.id = s.idusuario\n" +
             "group BY u.id, u.username\n" +
             "order by total_sesiones desc\n" +
-            "limit 1;",nativeQuery=true)
+            "limit 3;",nativeQuery=true)
     public List<String[]> usermoresesiones();
 
     //La tecnica de relajacion mas usada
@@ -37,6 +37,6 @@ public interface SesionTerapiaRepository extends JpaRepository<SesionTerapia, In
             "join Terapia t on s.idterapia = t.id_Terapia\n" +
             "group by t.id_Terapia, t.tipo_Terapia\n" +
             "order by total_sesiones desc\n" +
-            " limit 1;",nativeQuery=true)
+            " limit 3;",nativeQuery=true)
     public List<String[]> terapiamoresesesions();
 }
